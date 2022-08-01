@@ -2,6 +2,7 @@ package org.xelow.mekanismfarming.Blocks.custom;
 
 import net.java.games.input.Component;
 import net.minecraft.block.*;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;

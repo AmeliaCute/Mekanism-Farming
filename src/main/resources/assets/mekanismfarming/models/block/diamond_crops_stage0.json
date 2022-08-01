@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "mekanismfarming:block/diamond_crops0"
+  }
+}

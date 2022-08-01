@@ -20,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xelow.mekanismfarming.Blocks.block;
 import org.xelow.mekanismfarming.Items.item;
+import org.xelow.mekanismfarming.Items.registers.crops;
 
 import java.util.stream.Collectors;
 
@@ -60,13 +61,16 @@ public class MekanismFarming {
         // Register the rendering handler for the block
         event.enqueueWork(() -> {
             LOGGER.info("Registering block models");
-            RenderTypeLookup.setRenderLayer(block.CoalCrops.get(), RenderType.getCutout());
+
+            RenderTypeLookup.setRenderLayer(crops.diamond.getBlock().get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(crops.iron.getBlock().get(), RenderType.getCutout());
+            RenderTypeLookup.setRenderLayer(crops.gold.getBlock().get(), RenderType.getCutout());
         });
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("Mekanism-Farming", "helloworld", () -> {
+        InterModComms.sendTo("mekanismfarming", "helloworld", () -> {
             LOGGER.info("Hello world from the MDK");
             return "Hello world";
         });

@@ -13,14 +13,19 @@ import org.xelow.mekanismfarming.Blocks.custom.MFCropsBlock;
 import org.xelow.mekanismfarming.Items.item;
 import org.xelow.mekanismfarming.MekanismFarming;
 
+import java.util.function.Supplier;
+
 public class block
 {
     public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(ForgeRegistries.BLOCKS, MekanismFarming.id);
 
     //Register blocks
-    public static final RegistryObject<Block> CoalCrops = BLOCK.register("coal_crops",
-            () -> new MFCropsBlock());
 
+
+    public static <T extends Block>RegistryObject<T> register(String name, Supplier<T> block) {
+        RegistryObject<T> toReturn = BLOCK.register(name, block);
+        return toReturn;
+    }
 
     public static void register(IEventBus iEventBus)
     {

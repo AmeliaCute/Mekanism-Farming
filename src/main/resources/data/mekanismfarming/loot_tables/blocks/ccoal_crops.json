@@ -21,17 +21,17 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "mekanismfarming:coal_crops",
+                  "block": "mekanismfarming:ccoal_crops",
                   "properties": {
                     "age": "7"
                   }
                 }
               ],
-              "name": "mekanismfarming:coal_fragment"
+              "name": "mekanismfarming:ccoal_fragment"
             },
             {
               "type": "minecraft:item",
-              "name": "mekanismfarming:coal_seeds"
+              "name": "mekanismfarming:ccoal_seeds"
             }
           ]
         }
@@ -53,13 +53,13 @@
               }
             }
           ],
-          "name": "mekanismfarming:coal_seeds"
+          "name": "mekanismfarming:ccoal_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "mekanismfarming:coal_crops",
+          "block": "mekanismfarming:ccoal_crops",
           "properties": {
             "age": "7"
           }
