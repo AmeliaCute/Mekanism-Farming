@@ -2,6 +2,7 @@ package org.xelow.mekanismfarming;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,8 +20,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xelow.mekanismfarming.Blocks.block;
+import org.xelow.mekanismfarming.Client.Screen.SeedCreatorScreen;
+import org.xelow.mekanismfarming.Containers.containers;
+import org.xelow.mekanismfarming.Event.player;
 import org.xelow.mekanismfarming.Items.item;
-import org.xelow.mekanismfarming.Items.registers.crops;
+import org.xelow.mekanismfarming.Items.customReg.crops;
+import org.xelow.mekanismfarming.TileEntity.tiles;
 
 import java.util.stream.Collectors;
 
@@ -40,6 +45,10 @@ public class MekanismFarming {
 
         block.register(modEventBus);
         item.register(modEventBus);
+        tiles.register(modEventBus);
+        containers.register(modEventBus);
+
+        forgeEventBus.addListener(player::playerToss);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
@@ -55,16 +64,13 @@ public class MekanismFarming {
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
-
-        // Register the rendering handler for the block
+        LOGGER.info("HELLO FROM DOCLIENTSTUFF");
         event.enqueueWork(() -> {
-            LOGGER.info("Registering block models");
-
             RenderTypeLookup.setRenderLayer(crops.diamond.getBlock().get(), RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(crops.iron.getBlock().get(), RenderType.getCutout());
             RenderTypeLookup.setRenderLayer(crops.gold.getBlock().get(), RenderType.getCutout());
+
+            ScreenManager.registerFactory(containers.SEED_CREATOR_CONTAINER.get(), SeedCreatorScreen::new);
         });
     }
 

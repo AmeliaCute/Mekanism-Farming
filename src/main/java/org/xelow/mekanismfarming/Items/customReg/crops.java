@@ -1,8 +1,6 @@
-package org.xelow.mekanismfarming.Items.registers;
+package org.xelow.mekanismfarming.Items.customReg;
 
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import org.xelow.mekanismfarming.Items.custom.CropsBlockItem;
 
 public class crops
